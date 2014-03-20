@@ -24,6 +24,14 @@ module OmniAuth
           name: access_token.token
         }
       end
+
+      protected
+
+      def create_http_request
+        req = super
+        req.basic_auth 'gctester', 'f1tness2010'
+        req
+      end
     end
   end
 end
