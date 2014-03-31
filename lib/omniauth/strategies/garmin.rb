@@ -12,7 +12,7 @@ module OmniAuth
         site: 'http://connectapitest.garmin.com',
         request_token_path: '/oauth-service-1.0/oauth/request_token',
         access_token_path: '/oauth-service-1.0/oauth/access_token',
-        authorize_path: '/oauthConfirm'
+        authorize_url: 'http://connecttest.garmin.com/oauthConfirm'
       }
 
       uid do
