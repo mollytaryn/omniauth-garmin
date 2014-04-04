@@ -9,10 +9,10 @@ module OmniAuth
 
       option :client_options, {
         scheme: :body,
-        site: 'http://connectapitest.garmin.com',
+        site: (ENV['GARMIN_CONNECT_API_URL'] || 'http://connectapitest.garmin.com'),
         request_token_path: '/oauth-service-1.0/oauth/request_token',
         access_token_path: '/oauth-service-1.0/oauth/access_token',
-        authorize_url: 'http://connecttest.garmin.com/oauthConfirm'
+        authorize_url: (ENV['GARMIN_CONNECT_URL'] || 'http://connecttest.garmin.com') + '/oauthConfirm'
       }
 
       uid do
@@ -37,7 +37,9 @@ module OmniAuth
 
         def create_http_request(*params)
           req = super
-          req.basic_auth ENV['GARMIN_USERNAME'], ENV['GARMIN_PASSWORD']
+          if ENV['GARMIN_USERNAME']
+            req.basic_auth ENV['GARMIN_USERNAME'], ENV['GARMIN_PASSWORD']
+          end
           req
         end
       end

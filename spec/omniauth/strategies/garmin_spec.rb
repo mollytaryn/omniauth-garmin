@@ -25,7 +25,7 @@ describe "OmniAuth::Strategies::Garmin" do
     end
 
     it 'has correct authorize url' do
-      subject.options.client_options.authorize_path.should eq('/oauthConfirm')
+      subject.options.client_options.authorize_url.should eq('http://connecttest.garmin.com/oauthConfirm')
     end
   end
 
